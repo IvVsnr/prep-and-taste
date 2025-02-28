@@ -1,53 +1,131 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* Allgemeine Layout-Stile */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3 {
+  color: #444;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Container für die App */
+div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  margin: 5px;
+/* Stil für die Eingabefelder */
+input {
   padding: 10px;
-  font-size: 16px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
 }
 
+/* Buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Stil für die Liste der Rezepte */
 ul {
   list-style-type: none;
   padding: 0;
 }
 
 li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  margin-left: 10px;
+}
+
+/* Zutaten und Zubereitung */
+h3 {
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="text"] {
   margin-bottom: 10px;
+}
+
+/* Markierte Zutaten */
+li button {
+  background-color: #35e53b;
+}
+
+li button:hover {
+  background-color: #e53535;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Styling für den Container mit den Buttons */
+.order-buttons-container button {
+  padding: 10px 20px;
+  border:none;
+  border-radius: 5px;
+  color:white;
+  cursor: pointer;
+}
+
+/* Bestellung hinzufügen Button (grün) */
+.order-buttons-container button:nth-child(1) {
+  background-color: #4CAF50;  /* Grün */
+}
+
+.order-buttons-container button:nth-child(1):hover {
+  background-color: #45a049;  /* Etwas dunkleres Grün */
+}
+
+/* Bestellung reduzieren Button (rot) */
+.order-buttons-container button:nth-child(2) {
+  background-color: #f44336;  /* Rot */
+}
+
+.order-buttons-container button:nth-child(2):hover {
+  background-color: #e53935;  /* Etwas dunkleres Rot */
 }

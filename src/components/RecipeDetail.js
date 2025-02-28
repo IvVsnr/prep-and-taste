@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const RecipeDetail = ({ recipe, onBack, onUpdateRecipe, onOrderChange }) => {
   // Zustand für Bestellmenge, markierte Zutaten und bearbeitete Zutaten/Anleitungen
-  const [orderCount, setOrderCount] = useState(0);
+  const [orderCount, setOrderCount] = useState(recipe.orderCount);
   const [markedIngredients, setMarkedIngredients] = useState(new Array(recipe.ingredients.length).fill(false));
   const [editedIngredients, setEditedIngredients] = useState(recipe.ingredients);
   const [editedInstructions, setEditedInstructions] = useState(recipe.instructions);
@@ -11,6 +11,9 @@ const RecipeDetail = ({ recipe, onBack, onUpdateRecipe, onOrderChange }) => {
 
   // Funktion zur Änderung der Bestellmenge
   const handleOrderChange = (change) => {
+    //setOrderCount(prevCount => Math.max(0, prevCount + change));
+    const newCount = Math.max(0, orderCount + change);
+    setOrderCount(newCount);
     onOrderChange(recipe.id, change);
   };
 
@@ -83,15 +86,20 @@ const RecipeDetail = ({ recipe, onBack, onUpdateRecipe, onOrderChange }) => {
       <ol>
         {editedInstructions.map((step, index) => (
           <li key={index}>
-            <input
-                type="text"
+            <textarea
                 value={step}
                 onChange={(e) => handleUpdateInstructions(index, e.target.value)}
+                rows={4}
+                cols={50}
+                style={{
+                  width: '100%',
+                  minHeight: '80%'
+                }}
             /> 
           </li>
         ))}
       </ol>
-      <div>
+      <div className="order-buttons-container">
         <button onClick={() => handleOrderChange(1)}>Bestellung hinzufügen</button>
         <button onClick={() => handleOrderChange(-1)}>Bestellung reduzieren</button>
       </div>
